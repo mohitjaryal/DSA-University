@@ -29,7 +29,7 @@ int pop() {
 
 int main() {
     char exp[100];
-    printf("Enter postfix expression (no spaces): ");
+    printf("Enter postfix expression: ");
     scanf("%s", exp);
 
     for (int i = 0; exp[i] != '\0'; i++) {
