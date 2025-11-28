@@ -16,6 +16,10 @@ void push(int val) {
 }
 
 int pop() {
+    if (!top) {
+        printf("Error: Stack underflow!\n");
+        exit(1);
+    }
     struct Node* temp = top;
     int val = temp->data;
     top = top->next;
@@ -24,8 +28,8 @@ int pop() {
 }
 
 int main() {
-    char exp[50];
-    printf("Enter postfix expression: ");
+    char exp[100];
+    printf("Enter postfix expression (no spaces): ");
     scanf("%s", exp);
 
     for (int i = 0; exp[i] != '\0'; i++) {
@@ -40,9 +44,11 @@ int main() {
                 case '-': push(a - b); break;
                 case '*': push(a * b); break;
                 case '/': push(a / b); break;
+                default: printf("Invalid operator: %c\n", ch); return 1;
             }
         }
     }
+
     printf("Result: %d\n", pop());
     return 0;
 }
